@@ -90,7 +90,7 @@ static const char *TAG = "main";
 #define WIFI_DISCONNECTED       2
 
 /*
- *Configuração do WiFiManager, posteriormente transformar em biblioteca
+ * Configuração do WiFiManager, posteriormente transformar em biblioteca
  */
 #define SSID_WIFI "IoTagainstFire"
 #define PWD_WIFI  "11111111"
@@ -281,7 +281,7 @@ void task_check_alarm(void *pvParameters){
                 /**
                  * Como a variável counter está sendo incrementada depois de ser enviada na fila, seu valor é iniciado em 1.
                  */
-                sprintf(res, "{\"Evento\": \"Sim\", \"value\":%d}", counter);
+                sprintf(res, "{\"Evento\": \"Um principio de incendio foi detectado. Acalme-se e siga as insrtruções de segurança que o bombeiro foi acionado.\", \"value\":%d}", counter);
 
                 /**
                     * int esp_mqtt_client_publish(esp_mqtt_client_handle_t client, const char *topic, const char *data, int len, int qos, int retain);
