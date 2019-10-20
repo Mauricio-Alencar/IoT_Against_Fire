@@ -1,0 +1,83 @@
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+<style>
+body {font-family: Arial;}
+form {border: 3px solid #f1f1f1;}
+input[type=text], input[type=password] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+}
+button:hover {
+  opacity: 0.8;
+}
+.container {
+  padding: 16px;
+}
+</style>
+</head>
+<body>
+<script>
+
+function send() {
+  document.getElementById("msg").innerHTML = "";
+  var ssid = document.getElementById("ssid").value;
+  var password = document.getElementById("password").value;
+
+  if( ssid == '' || ssid.length < 3)
+  {
+     alert("O campo ssid deve ter 3 ou mais caracteres.");
+     return;
+  }
+
+  if( password == '' || password.length < 8)
+  {
+     alert("O campo password deve ter 8 ou mais caracteres.");
+     return;
+  }
+
+  var http = new XMLHttpRequest();
+  var url = '';
+  var params = 'ssid='+ssid+'&password='+password;
+  http.open('POST', url, true);
+  http.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+  http.onreadystatechange = function() {
+      if(http.readyState == 4 && http.status == 200) {
+          alert(http.responseText);
+          if(http.responseText === "1")
+          {
+            document.getElementById("msg").innerHTML = "<b>As configurações da rede WiFi foram alteradas com sucesso! O dispositivo está sendo reiniciado.</b>";
+          }
+      }
+  }
+  http.send(params);
+}
+</script>
+
+  <div align="center">
+    <label id="msg"></label>
+  </div>
+  <hr>
+  <div class="container">
+    <label for="ssid"><b>SSID</b></label>
+    <input type="text" placeholder="Enter SSID" name="ssid" required id="ssid">
+    <label for="password"><b>Password</b></label>
+    <input type="password" placeholder="Enter Password" name="password" required id="password">     
+    <button onclick="send()">Save</button>
+  </div>
+
+</body>
+</html>

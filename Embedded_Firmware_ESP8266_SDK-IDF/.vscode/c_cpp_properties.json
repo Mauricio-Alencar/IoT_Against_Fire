@@ -1,0 +1,20 @@
+{
+    "configurations": [
+        {
+            "name": "Win32",
+            "includePath": [
+                "C:\\ESP8266\\ESP8266_RTOS_SDK\\**",
+                "C:\\ESP8266\\xtensa-lx106-elf-win32-1.22.0-100-ge567ec7-5.2.0\\xtensa-lx106-elf\\**"
+            ],
+            "defines": [
+                "_DEBUG",
+                "UNICODE",
+                "_UNICODE"
+            ],
+            "intelliSenseMode": "msvc-x64",
+            "compilerPath": "",
+            "forcedInclude": []
+        }
+    ],
+    "version": 4
+}
